@@ -62,6 +62,21 @@ body, html {
     align-items: center;
 }
 
+#right-side {
+    width: 50%;  /* Adjust width as necessary */
+    height: 100vh; /* Full viewport height, adjust as necessary */
+    display: flex; /* This will help center the image inside the div */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Prevents any overflow from the div */
+}
+
+#right-side img {
+    max-width: 100%;  /* Ensures the image is not wider than the div */
+    max-height: 100%; /* Ensures the image is not taller than the div */
+    object-fit: cover; /* Covers the div area, might crop some parts of the image */
+}
+
 body::before {
     content: ''; /* Necessary for a pseudo-element */
     position: absolute; /* Position relative to the body element */
