@@ -1,19 +1,17 @@
-window.addEventListener('scroll', revealProjects);
+document.addEventListener("DOMContentLoaded", function() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        rootMargin: '0px',
+        threshold: 0.5  // Adjust if necessary to ensure elements are half visible before triggering
+    });
 
-function revealProjects() {
-    var projects = document.querySelectorAll('.project');
-
-    for (var i = 0; i < projects.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = projects[i].getBoundingClientRect().top;
-        var elementVisible = 150; // Adjust based on when you want the project to become visible
-
-        if (elementTop < windowHeight - elementVisible) {
-            projects[i].classList.add('active');
-        } else {
-            projects[i].classList.remove('active');
-        }
-    }
-}
-
-revealProjects(); // Call on initial load in case projects are in view initially
+    // Target all the elements you want to observe
+    document.querySelectorAll('.project').forEach(project => {
+        observer.observe(project);
+    });
+});

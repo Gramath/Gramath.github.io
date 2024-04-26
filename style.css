@@ -1,23 +1,65 @@
-.top-bar {
+#top-bar ul {
+    list-style: none; /* Removes the default list styling */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Uses flexbox to layout children horizontally */
+    justify-content: center; /* Centers the list items in the navigation bar */
+}
+
+#top-bar li {
+    padding: 10px; /* Adds some space around the buttons */
+}
+
+#top-bar {
     background-color: #333;
     color: #fff;
-    padding: 10px;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* High z-index to ensure it stays on top of other content */
+}
+
+#top-bar input[type="button"] {
+    background-color: #444; /* Darker than the bar for contrast */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#top-bar input[type="button"]:hover {
+    background-color: #555; /* Slightly lighter on hover */
 }
 
 
-
 body, html {
-    font-family: 'Playfair';
+    font-family: 'Raleway', sans-serif;
     font-style: normal;
     font-weight: 100;
-    margin: 0.5;
+    margin: 0px;  /* Specify units */
     padding: 0;
     scroll-behavior: smooth;
-    position: relative; /* Updated: Needed for the pseudo-element to position correctly */
-    height: 100%; /* Ensure the body takes up full viewport height */
-    width: 100%; /* Ensure the body takes up full viewport width */
-    overflow: auto; /* Keep the standard scrolling behavior */
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+
+#left-side, #right-side {
+    width: 50%;  /* Each div takes up half of the body's width */
+    height: 99vh; /* Optional: makes each div take the full height of the viewport */
+    float: left; /* This makes the divs sit side by side */
+}
+
+/* Optional: Add some styling to differentiate the two sides */
+#left-side {
+    background-color: #f1f1f1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 body::before {
@@ -27,10 +69,10 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('back.jpg'); /* Your background image */
-    background-size: cover; /* Cover the entire page */
-    background-position:inherit; /* Center the background image */
-    background-attachment:scroll; /* Optional: Makes the background image fixed during scroll */
+    /*background-image: url('back.jpg'); /* Your background image */
+    /*background-size: cover; /* Cover the entire page */
+    /*background-position:inherit; /* Center the background image */
+    /*background-attachment:scroll; /* Optional: Makes the background image fixed during scroll */
     opacity: 0.7; /* Adjust the transparency; 1.0 is fully opaque, 0 is fully transparent */
     z-index: -1; /* Ensure the background is behind all other content */
 }
@@ -45,15 +87,11 @@ body::before {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
-    transition: all 0.5s ease;
+    transition: all 0.75s ease;
     opacity: 0;
     transform: translateY(50px);
     visibility: hidden;
-    background-image: url('back.jpg'); /* Your background image */
-    background-size: cover; /* Cover the entire page */
-    background-position:inherit; /* Center the background image */
-    background-attachment:scroll; /* Optional: Makes the background image fixed during scroll */
-    opacity: 0.7; /* Adjust the transparency; 1.0 is fully opaque, 0 is fully transparent */
+    position: relative;
     z-index: -1; /* Ensure the background is behind all other content */
 
 }
@@ -71,5 +109,5 @@ body::before {
 }
 
 .project.active .details {
-    max-height: 500px; /* Adjust as needed */
+    max-height: 800px; /* Adjust as needed */
 }
