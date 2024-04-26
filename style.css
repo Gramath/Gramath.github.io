@@ -1,0 +1,75 @@
+.top-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+body, html {
+    font-family: 'Playfair';
+    font-style: normal;
+    font-weight: 100;
+    margin: 0.5;
+    padding: 0;
+    scroll-behavior: smooth;
+    position: relative; /* Updated: Needed for the pseudo-element to position correctly */
+    height: 100%; /* Ensure the body takes up full viewport height */
+    width: 100%; /* Ensure the body takes up full viewport width */
+    overflow: auto; /* Keep the standard scrolling behavior */
+}
+
+body::before {
+    content: ''; /* Necessary for a pseudo-element */
+    position: absolute; /* Position relative to the body element */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('back.jpg'); /* Your background image */
+    background-size: cover; /* Cover the entire page */
+    background-position:inherit; /* Center the background image */
+    background-attachment:scroll; /* Optional: Makes the background image fixed during scroll */
+    opacity: 0.7; /* Adjust the transparency; 1.0 is fully opaque, 0 is fully transparent */
+    z-index: -1; /* Ensure the background is behind all other content */
+}
+
+.section, .project {
+    padding: 20px;
+    text-align: center;
+}
+
+.project {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    visibility: hidden;
+    background-image: url('back.jpg'); /* Your background image */
+    background-size: cover; /* Cover the entire page */
+    background-position:inherit; /* Center the background image */
+    background-attachment:scroll; /* Optional: Makes the background image fixed during scroll */
+    opacity: 0.7; /* Adjust the transparency; 1.0 is fully opaque, 0 is fully transparent */
+    z-index: -1; /* Ensure the background is behind all other content */
+
+}
+
+.project.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.project.active .details {
+    max-height: 500px; /* Adjust as needed */
+}
